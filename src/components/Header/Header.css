@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 45px 0;
+    margin: 45px auto 0;
     border-bottom: 1px solid #F7931A;
   }
   
