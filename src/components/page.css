@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(77, 77, 77);
+    margin: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: auto;
+}
