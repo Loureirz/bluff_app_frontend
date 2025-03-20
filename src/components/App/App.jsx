@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import About from '../About/About';
 import Preloader from '../Preloader/preloader';
+import BitcoinPrice from '../BitcoinPrice/BitcoinPrice';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
     <>
       <div className="page">
         <Header />
+        <BitcoinPrice />
         <About />
         <Footer />
       </div>
