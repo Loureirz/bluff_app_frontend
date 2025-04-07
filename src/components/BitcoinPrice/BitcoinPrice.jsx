@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import Preloader from '../Preloader/preloader';
+import { fetchBitcoinPrice, fetchBitcoinHistoricalData } from "../../utils/BitcoinApi";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
 import "./BitcoinPrice.css";
@@ -15,20 +16,20 @@ const BitcoinPrice = () => {
   const [error, setError] = useState(null);
 
   // Função para buscar o preço do Bitcoin
-  const fetchBitcoinPrice = async () => {
+  const loadBitcoinPrice = async () => {
     try {
-      const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`);
-      setPrice(response.data.bitcoin);
+      const data = await fetchBitcoinPrice(currency);
+      setPrice(data.bitcoin);
     } catch (err) {
       setError("Erro ao carregar o preço do Bitcoin.");
     }
   };
 
   // Função para buscar dados históricos para o gráfico (últimas 30 horas)
-  const fetchBitcoinHistoricalData = async () => {
+  const loadBitcoinHistoricalData = async () => {
     try {
-      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=${currency}&days=1`);
-      const prices = response.data.prices.map(price => price[1]);
+      const data = await fetchBitcoinHistoricalData(currency);
+      const prices = data.prices.map(price => price[1]);
       setHistoricalData(prices);
     } catch (err) {
       setError("Erro ao carregar os dados históricos.");
@@ -36,8 +37,8 @@ const BitcoinPrice = () => {
   };
 
   useEffect(() => {
-    fetchBitcoinPrice();
-    fetchBitcoinHistoricalData();
+    loadBitcoinPrice();
+    loadBitcoinHistoricalData();
     setLoading(false);
   }, [currency]);
 
@@ -73,7 +74,7 @@ const BitcoinPrice = () => {
       </div>
 
       {loading ? (
-        <p>Carregando...</p>
+        <Preloader />
       ) : error ? (
         <p>{error}</p>
       ) : (
