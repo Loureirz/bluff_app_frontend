@@ -37,10 +37,22 @@ const BitcoinPrice = () => {
   };
 
   useEffect(() => {
-    loadBitcoinPrice();
-    loadBitcoinHistoricalData();
-    setLoading(false);
+    const fetchData = async () => {
+      setLoading(true); // Começa o loading
+      setError(null); // Limpa erros antigos
+      try {
+        await loadBitcoinPrice();
+        await loadBitcoinHistoricalData();
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // Só finaliza o loading depois que tudo terminou
+      }
+    };
+  
+    fetchData();
   }, [currency]);
+  
 
   // Dados do gráfico
   const chartData = {
