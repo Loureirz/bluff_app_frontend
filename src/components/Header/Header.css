@@ -4,7 +4,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 45px auto 0;
+    margin: 0 auto 0;
     border-bottom: 1px solid #F7931A;
   }
   
@@ -15,7 +15,7 @@
   }
   
   .header__item {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
   }
   
