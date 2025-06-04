@@ -11,10 +11,10 @@ function Navigation() {
   return (
     <nav className="navigation">
       <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-        <li><a href="#home">Início</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#market">Mercado</a></li>
-        <li><a href="#contact">Contato</a></li>
+        <li className="navigation__item"><a href="#home" className="navigation__link">Início</a></li>
+        <li className="navigation__item"><a href="#about" className="navigation__link">Sobre</a></li>
+        <li className="navigation__item"><a href="#contact" className="navigation__link">Contato</a></li>
+        <button class="navigation__button navigation__button--join">Inscrever-se</button>
       </ul>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="bar"></div>
