@@ -1,30 +1,109 @@
 .intro {
-    padding: 80px 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.intro-top {
+  max-width: 1280px;
+  width: 100%;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.intro-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 100px;
+}
+
+.intro-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding-right: 50px;
+}
+
+.intro-image {
+  max-width: 130%;
+  height: auto;
+}
+
+.intro-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+  letter-spacing: -1px;
+}
+
+.intro-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.intro-highlight {
+  color: #F7931A;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.intro-bottom {
+  max-width: 1000px; /* menor que 1280px p/ centralizar melhor */
+  width: 100%;
+  margin-top: 4rem;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1.5rem;
+  max-width: 1000px;
+  text-align: justify;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .intro-top {
+    flex-direction: column;
     text-align: center;
-    background-color: #fff;
-    color: #333;
   }
-  
-  .intro-container {
-    max-width: 800px;
-    margin: 0 auto;
+
+  .intro-image {
+    max-width: 80%;
+    margin-top: 1rem;
   }
-  
-  .intro-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #f7931a;
-    margin-bottom: 24px;
-  }
-  
+
   .intro-text {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
+    text-align: left; /* ou center, se quiser centralizar em telas pequenas */
   }
-  
-  .highlight {
-    font-weight: bold;
-    color: #f7931a;
+
+  .intro-bottom {
+    padding: 0 16px;
   }
-  
+}
