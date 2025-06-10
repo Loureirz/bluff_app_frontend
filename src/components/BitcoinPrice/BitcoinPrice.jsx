@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Preloader from '../Preloader/preloader';
 import { fetchBitcoinPrice, fetchBitcoinHistoricalData } from "../../utils/BitcoinApi";
 import { Line } from "react-chartjs-2";
@@ -12,49 +12,30 @@ const BitcoinPrice = () => {
   const [price, setPrice] = useState(null);
   const [currency, setCurrency] = useState("usd");
   const [historicalData, setHistoricalData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showData, setShowData] = useState(false); // Para controlar se os dados devem ser exibidos
 
-  // Função para buscar o preço do Bitcoin
-  const loadBitcoinPrice = async () => {
-    try {
-      const data = await fetchBitcoinPrice(currency);
-      setPrice(data.bitcoin);
-    } catch (err) {
-      setError("Erro ao carregar o preço do Bitcoin.");
-    }
-  };
+  const loadData = async () => {
+    setLoading(true);
+    setError(null);
+    setShowData(false); // Oculta dados anteriores enquanto carrega
 
-  // Função para buscar dados históricos para o gráfico (últimas 30 horas)
-  const loadBitcoinHistoricalData = async () => {
     try {
-      const data = await fetchBitcoinHistoricalData(currency);
-      const prices = data.prices.map(price => price[1]);
+      const priceData = await fetchBitcoinPrice(currency);
+      const historical = await fetchBitcoinHistoricalData(currency);
+      const prices = historical.prices.map(price => price[1]);
+
+      setPrice(priceData.bitcoin);
       setHistoricalData(prices);
+      setShowData(true); // Exibe os dados
     } catch (err) {
-      setError("Erro ao carregar os dados históricos.");
+      setError("Erro ao carregar os dados.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true); // Começa o loading
-      setError(null); // Limpa erros antigos
-      try {
-        await loadBitcoinPrice();
-        await loadBitcoinHistoricalData();
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false); // Só finaliza o loading depois que tudo terminou
-      }
-    };
-  
-    fetchData();
-  }, [currency]);
-  
-
-  // Dados do gráfico
   const chartData = {
     labels: new Array(historicalData.length).fill(''),
     datasets: [
@@ -71,7 +52,7 @@ const BitcoinPrice = () => {
   return (
     <div className="bitcoin-price">
       <h2>Preço do Bitcoin</h2>
-      
+
       <div className="currency-selector">
         <label htmlFor="currency">Escolha a moeda: </label>
         <select
@@ -83,18 +64,25 @@ const BitcoinPrice = () => {
           <option value="brl">BRL</option>
           <option value="eur">EUR</option>
         </select>
+        <button onClick={loadData} className="load-button">Carregar dados</button>
       </div>
 
       {loading ? (
         <Preloader />
       ) : error ? (
         <p>{error}</p>
-      ) : (
+      ) : showData && (
         <div>
           <div className="price">
-            <p><strong>{currency.toUpperCase()}:</strong> {price?.[currency]}</p>
+            <p>
+              <strong>{currency.toUpperCase()}:</strong> { 
+                price && typeof price[currency] === 'number'
+                ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: currency.toUpperCase() }).format(price[currency])
+                : 'Carregando...'
+              }
+            </p>
           </div>
-          
+
           <div className="chart-container">
             <Line data={chartData} />
           </div>

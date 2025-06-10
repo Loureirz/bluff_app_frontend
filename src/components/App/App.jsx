@@ -30,7 +30,6 @@ function App() {
               <>
               <Intro />
               <ShowPrice />
-              <BitcoinPriceCards />
               <About />
               </>
             } />

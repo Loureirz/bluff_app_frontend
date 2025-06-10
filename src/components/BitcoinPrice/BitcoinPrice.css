@@ -1,7 +1,7 @@
 .bitcoin-price {
     text-align: center;
-    color: #fff;
-    padding: 20px;
+    color: black;
+    padding: 80px 20px 20px;
     margin: 20px;
     border-radius: 8px;
   }
@@ -45,6 +45,20 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
+
+  .load-button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.load-button:hover {
+  background-color: darkorange;
+}
 
   canvas {
     width: 100%;
