@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import "./App.css";
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import About from '../About/About';
 import Preloader from '../Preloader/preloader';
 import Intro from '../Intro/Intro';
+import ShowPrice from '../ShowPrice/ShowPrice';
 import BitcoinPrice from '../BitcoinPrice/BitcoinPrice';
 import BitcoinPriceCards from '../BitcoinPriceCards/BitcoinPriceCards';
 
@@ -21,14 +23,24 @@ function App() {
   return loading ? <Preloader /> : (
     <>
       <div className="page">
-        <Header />
-        <Intro />
-        <BitcoinPriceCards />
-        <About />
-        <Footer />
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={
+              <>
+              <Intro />
+              <ShowPrice />
+              <BitcoinPriceCards />
+              <About />
+              </>
+            } />
+            <Route path="/preco" element={<BitcoinPrice />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
       </div>
     </>
   )
 }
 
-export default App
+export default App;

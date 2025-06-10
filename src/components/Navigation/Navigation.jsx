@@ -14,7 +14,7 @@ function Navigation() {
         <li className="navigation__item"><a href="#home" className="navigation__link">Início</a></li>
         <li className="navigation__item"><a href="#about" className="navigation__link">Sobre</a></li>
         <li className="navigation__item"><a href="#contact" className="navigation__link">Contato</a></li>
-        <button class="navigation__button navigation__button--join">Inscrever-se</button>
+        <button className="navigation__button navigation__button--join">Inscrever-se</button>
       </ul>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="bar"></div>

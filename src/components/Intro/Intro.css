@@ -106,4 +106,8 @@
   .intro-bottom {
     padding: 0 16px;
   }
+
+  .intro-left {
+    padding-left: 0;
+  }
 }
