@@ -89,6 +89,10 @@
 
 /* Responsivo */
 @media (max-width: 900px) {
+  .intro {
+    padding-top: 100px;
+  }
+  
   .intro-top {
     flex-direction: column;
     text-align: center;
@@ -109,5 +113,30 @@
 
   .intro-left {
     padding-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .intro {
+    padding-top: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .intro {
+    padding-top: 200px;  /* ainda menor para smartphones */
+    padding-bottom: 20px;
+  }
+
+  .intro-image {
+    max-width: 100%;
+  }
+
+  .intro-title {
+    font-size: 2rem; /* ajusta tamanho da fonte */
+  }
+
+  .intro-subtitle {
+    font-size: 1.25rem;
   }
 }

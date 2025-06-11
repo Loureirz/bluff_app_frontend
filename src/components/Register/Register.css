@@ -1,0 +1,9 @@
+.register__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* centraliza horizontalmente */
+    justify-content: flex-start; /* começa do topo */
+    padding-top: 80px;
+    margin: 0 2rem 2rem 2rem;
+    text-align: center;
+  }

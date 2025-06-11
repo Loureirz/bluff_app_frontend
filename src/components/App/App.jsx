@@ -8,7 +8,7 @@ import Preloader from '../Preloader/preloader';
 import Intro from '../Intro/Intro';
 import ShowPrice from '../ShowPrice/ShowPrice';
 import BitcoinPrice from '../BitcoinPrice/BitcoinPrice';
-import BitcoinPriceCards from '../BitcoinPriceCards/BitcoinPriceCards';
+import UnderConstruction from '../Register/Register';
 
 function App() {
 
@@ -34,6 +34,7 @@ function App() {
               </>
             } />
             <Route path="/preco" element={<BitcoinPrice />} />
+            <Route path="/inscrever-se" element={<UnderConstruction />} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -40,3 +40,22 @@
   color: orange;
   font-weight: bold;
 }
+
+/* Media query para telas pequenas */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;       /* Imagem acima do texto */
+    align-items: center;          /* Centraliza horizontalmente */
+  }
+
+  .about-text-container {
+    width: 100%;                  /* Texto ocupa toda largura */
+    min-width: unset;             /* Remove limite mínimo */
+    text-align: center;           /* Centraliza texto */
+  }
+
+  .about-image {
+    max-width: 80%;               /* Imagem um pouco menor na largura */
+    margin-bottom: 1.5rem;       /* Espaço abaixo da imagem */
+  }
+}

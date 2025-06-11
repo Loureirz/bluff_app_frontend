@@ -10,7 +10,7 @@ function ShowPrice() {
     }
 
     return(
-        <section id="price" className="showprice">
+        <section id="graph" className="showprice">
             <div className="showprice__container">
                 <h2 className="showprice__title">Você ainda acredita no dinheiro de papel?</h2>
                 <p className="showprice__text">
